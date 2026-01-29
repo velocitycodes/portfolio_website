@@ -16,7 +16,7 @@ if (typeof window !== 'undefined') {
 const PROJECTS = [
     { 
         id: "01", 
-        name: "RUAIRE-ECOMMERCE", 
+        name: "RUAIRE", 
         desc: "In Progress", 
         color: "bg-[#1a1a1a]",
         link: "Not-Available",
@@ -25,13 +25,13 @@ const PROJECTS = [
             { src: "/projects/in progress.jpg", alt: "Ruaire Product Page" },
             { src: "/projects/in progress.jpg", alt: "Ruaire Dashboard" }
         ],
-        description: "A modern e-commerce platform with advanced features like real-time inventory, AI recommendations, and seamless checkout.",
+        description: "The Project is Currently in Developement Process...",
         tech: [""]
     },
     { 
         id: "02", 
         name: "CHANDRESHWAR PROPERTIES", 
-        desc: "Live Project", 
+        desc: "Real-Estate Website", 
         color: "bg-[#252525]",
         link: "https://chandreshwarproperties.in",
         images: [
@@ -45,7 +45,7 @@ const PROJECTS = [
     { 
         id: "03", 
         name: "MOUNTAIN FLASHES", 
-        desc: "Uttarakhand's Special Website", 
+        desc: "Tours and Adventure Website", 
         color: "bg-[#333333]",
         link: "https://mountainflashes.com",
         images: [
@@ -53,7 +53,7 @@ const PROJECTS = [
             { src: "/projects/mountain-flashes-tours-img.png", alt: "Adventures Page" },
             { src: "/projects/mountain-flashes-adventure-img.png", alt: "Tours Packages Page" }
         ],
-        description: "AI-powered fitness application with workout tracking, nutrition planning, and progress analytics.",
+        description: "A vibrant travel and adventure portal for Mountain Flashes, a premier tour operator specializing in Adventure Sports and Uttarakhand tourism.",
         tech: ["HTML5", "TAILWIND", "MYSQL", "PHP"]
     },
     
