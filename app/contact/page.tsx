@@ -17,7 +17,7 @@ export default function ContactPage() {
             <Header />
             <main className="flex-grow flex items-center justify-center py-12 px-4">
                 <div className="w-full max-w-2xl bg-zinc-900/50 border border-zinc-800 rounded-3xl overflow-hidden backdrop-blur-sm">
-                    <ContactForm onClose={handleClose} />
+                    <ContactForm/>
                 </div>
             </main>
             <Footer />
