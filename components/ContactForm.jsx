@@ -27,7 +27,7 @@ const ContactPage = () => {
                 <path d="M22 16.92V19.92C22 20.47 21.55 20.92 21 20.92C16.04 20.92 12 16.88 12 11.92C12 6.96 16.04 2.92 21 2.92C21.55 2.92 22 3.37 22 3.92V6.92C22 7.47 21.55 7.92 21 7.92C19.24 7.92 17.57 8.45 16.22 9.41C15.17 10.17 14.31 11.15 13.69 12.29C13.07 13.43 12.7 14.69 12.61 15.99C12.57 16.6 12.97 17.14 13.58 17.22C15.23 17.46 16.94 17.24 18.49 16.58C19.64 16.08 20.67 15.37 21.5 14.5C21.82 14.16 22 13.73 22 13.28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <span className="contact-text">+91 999 999 9999</span>
+            <span className="contact-text">+91 9258976261</span>
           </div>
 
           <div className="contact-item phone-item">
@@ -36,7 +36,7 @@ const ContactPage = () => {
                 <path d="M22 16.92V19.92C22 20.47 21.55 20.92 21 20.92C16.04 20.92 12 16.88 12 11.92C12 6.96 16.04 2.92 21 2.92C21.55 2.92 22 3.37 22 3.92V6.92C22 7.47 21.55 7.92 21 7.92C19.24 7.92 17.57 8.45 16.22 9.41C15.17 10.17 14.31 11.15 13.69 12.29C13.07 13.43 12.7 14.69 12.61 15.99C12.57 16.6 12.97 17.14 13.58 17.22C15.23 17.46 16.94 17.24 18.49 16.58C19.64 16.08 20.67 15.37 21.5 14.5C21.82 14.16 22 13.73 22 13.28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <span className="contact-text">+91 999 999 9999</span>
+            <span className="contact-text">+91 9258976261</span>
           </div>
         </div>
 
