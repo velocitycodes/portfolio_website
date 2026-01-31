@@ -18,7 +18,7 @@ const ContactPage = () => {
                 <path d="M22 6L12 13L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <span className="contact-text">Velocitycodes@gmail.com</span>
+            <span className="contact-text">velocitycodes.web@gmail.com</span>
           </div>
 
           <div className="contact-item phone-item">
