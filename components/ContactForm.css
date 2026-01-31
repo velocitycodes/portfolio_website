@@ -15,12 +15,12 @@
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 10px;
-    color: #1a1a1a;
+    color: #9f47ec;
 }
 
 .subtitle {
     font-size: 1.1rem;
-    color: #666;
+    color: #9f47ec;
     font-weight: 400;
 }
 
@@ -71,7 +71,7 @@
 
 .contact-text {
     font-size: 1.1rem;
-    color: #1a1a1a;
+    color: #9f47ec;
     font-weight: 500;
 }
 
@@ -94,7 +94,7 @@
 
 .contact-message p {
     font-size: 1.1rem;
-    color: #666;
+    color: #9f47ec;
     line-height: 1.6;
     margin-bottom: 8px;
 }
