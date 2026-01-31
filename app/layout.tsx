@@ -3,6 +3,8 @@ import { Outfit, Kaushan_Script } from "next/font/google";
 import "./globals.css";
 import LoadingManager from "@/components/LoadingManager";
 
+import SmoothScroll from "@/components/SmoothScroll";
+
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
@@ -32,9 +34,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={`${outfit.variable} ${kaushan.variable} antialiased bg-black text-white`}>
-        <LoadingManager>
-          {children}
-        </LoadingManager>
+        <SmoothScroll>
+          <LoadingManager>
+            {children}
+          </LoadingManager>
+        </SmoothScroll>
       </body>
     </html>
   );

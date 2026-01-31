@@ -25,8 +25,16 @@ export default function Skills() {
     const radius = 250; // Radius of the circle
 
     return (
-        <section className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-black text-white">
-            <h2 className="absolute z-10 text-5xl font-black uppercase tracking-widest font-sans">OUR SKILLS</h2>
+        <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black text-white">
+            <div className="absolute top-20 text-center z-10">
+                <div className="section-header-wrap">
+                    <span className="section-tag">Technical Stack</span>
+                    <div className="accent-line-heading"></div>
+                </div>
+                <h2 className="text-5xl font-bold uppercase tracking-wide text-white md:text-7xl">
+                    OUR <span className="text-stroke">SKILLS</span>
+                </h2>
+            </div>
 
             {/* Rotating Container */}
             <motion.div
@@ -102,6 +110,41 @@ export default function Skills() {
                     onClick={() => setSelectedId(null)}
                 />
             )}
+
+            <style>{`
+                .section-header-wrap {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 20px;
+                    margin-bottom: 20px;
+                }
+
+                .section-tag {
+                    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+                    text-transform: uppercase;
+                    letter-spacing: 0.4em;
+                    color: #B19EEF;
+                    font-size: 14px;
+                }
+
+                .accent-line-heading {
+                    height: 1px;
+                    width: 50px;
+                    background: rgba(177, 158, 239, 0.4);
+                }
+
+                .text-stroke {
+                    -webkit-text-stroke: 1px rgba(255,255,255,0.4);
+                    color: transparent;
+                }
+
+                @media (max-width: 768px) {
+                    .text-stroke {
+                        -webkit-text-stroke: 0.5px rgba(255,255,255,0.4);
+                    }
+                }
+            `}</style>
         </section>
     );
 }

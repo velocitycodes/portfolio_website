@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="fade-in-up stagger-fade-in">
+      <main>
         <Hero />
         <AboutSwitch />
         <CreativeMinds />

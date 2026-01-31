@@ -1,0 +1,156 @@
+.contact-page {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #333;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-bottom: 50px;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 350px;
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.contact-item:hover {
+    background-color: #f1f3f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #495057;
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-size: 1.1rem;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.email-item .contact-text {
+    color: #228be6;
+}
+
+.contact-message {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-message h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+}
+
+.contact-message p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.contact-footer {
+    text-align: center;
+}
+
+.contact-button {
+    background-color: #228be6;
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(34, 139, 230, 0.2);
+}
+
+.contact-button:hover {
+    background-color: #1c7ed6;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(34, 139, 230, 0.25);
+}
+
+.contact-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .contact-header h1 {
+        font-size: 2rem;
+    }
+
+    .contact-message h2 {
+        font-size: 1.5rem;
+    }
+
+    .contact-item {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-page {
+        padding: 30px 15px;
+    }
+
+    .contact-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .contact-text {
+        font-size: 1rem;
+    }
+}

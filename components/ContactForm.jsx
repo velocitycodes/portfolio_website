@@ -1,168 +1,59 @@
-"use client";
+import React from 'react';
+import './ContactForm.css'; // Assuming you'll create a CSS file for styling
 
-import React, { useState } from 'react';
-
-const ContactForm = ({ onClose }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    try {
-      // Your actual form submission logic would go here
-      console.log('Form submitted:', formData);
-      
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setSubmitSuccess(true);
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      });
-      
-      // Auto-close after 3 seconds on success
-      setTimeout(() => {
-        if (submitSuccess) {
-          onClose();
-        }
-      }, 3000);
-      
-    } catch (error) {
-      console.error('Form submission error:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
+const ContactPage = () => {
   return (
-    <div className="p-8 md:p-12 text-white">
-      <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-        Let's Build Together
-      </h2>
-      <p className="text-gray-400 text-center mb-8">
-        Ready to bring your ideas to life? Get in touch with us.
-      </p>
-      
-      {submitSuccess ? (
-        <div className="text-center py-12">
-          <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
-            <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-            </svg>
+    <div className="contact-page">
+      <header className="contact-header">
+        <h1>Get in Touch</h1>
+        <p className="subtitle">You can reach us anytime</p>
+      </header>
+
+      <main className="contact-content">
+        <div className="contact-details">
+          <div className="contact-item email-item">
+            <div className="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M22 6L12 13L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <span className="contact-text">Velocitycodes@gmail.com</span>
           </div>
-          <h3 className="text-2xl font-bold mb-3">Message Sent!</h3>
-          <p className="text-gray-300">
-            Thank you for reaching out. We'll get back to you within 24 hours.
-          </p>
-          <p className="text-gray-400 text-sm mt-4">
-            This window will close automatically...
-          </p>
+
+          <div className="contact-item phone-item">
+            <div className="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 16.92V19.92C22 20.47 21.55 20.92 21 20.92C16.04 20.92 12 16.88 12 11.92C12 6.96 16.04 2.92 21 2.92C21.55 2.92 22 3.37 22 3.92V6.92C22 7.47 21.55 7.92 21 7.92C19.24 7.92 17.57 8.45 16.22 9.41C15.17 10.17 14.31 11.15 13.69 12.29C13.07 13.43 12.7 14.69 12.61 15.99C12.57 16.6 12.97 17.14 13.58 17.22C15.23 17.46 16.94 17.24 18.49 16.58C19.64 16.08 20.67 15.37 21.5 14.5C21.82 14.16 22 13.73 22 13.28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <span className="contact-text">+91 999 999 9999</span>
+          </div>
+
+          <div className="contact-item phone-item">
+            <div className="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 16.92V19.92C22 20.47 21.55 20.92 21 20.92C16.04 20.92 12 16.88 12 11.92C12 6.96 16.04 2.92 21 2.92C21.55 2.92 22 3.37 22 3.92V6.92C22 7.47 21.55 7.92 21 7.92C19.24 7.92 17.57 8.45 16.22 9.41C15.17 10.17 14.31 11.15 13.69 12.29C13.07 13.43 12.7 14.69 12.61 15.99C12.57 16.6 12.97 17.14 13.58 17.22C15.23 17.46 16.94 17.24 18.49 16.58C19.64 16.08 20.67 15.37 21.5 14.5C21.82 14.16 22 13.73 22 13.28" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <span className="contact-text">+91 999 999 9999</span>
+          </div>
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-300">
-              Your Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-500"
-              placeholder="John Doe"
-            />
-          </div>
 
-          <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-300">
-              Email Address
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-500"
-              placeholder="john@example.com"
-            />
-          </div>
+        <div className="contact-message">
+          <h2>Need help with something? Want a demo?</h2>
+          <p>Get in touch with our friendly team and</p>
+          <p>we'll get in touch within 2 hours.</p>
+        </div>
+      </main>
 
-          <div className="space-y-2">
-            <label htmlFor="message" className="block text-sm font-medium text-gray-300">
-              Your Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={5}
-              className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all placeholder-gray-500 resize-none"
-              placeholder="Tell us about your project, timeline, and budget..."
-            />
-          </div>
-
-          <div className="flex gap-4 pt-6">
-            <button
-              type="button"
-              onClick={onClose}
-              className="flex-1 px-6 py-3 border border-gray-700 text-gray-300 rounded-lg hover:bg-gray-800 transition-all hover:border-gray-600"
-              disabled={isSubmitting}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-medium tracking-wide"
-            >
-              {isSubmitting ? (
-                <span className="flex items-center justify-center">
-                  <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-                  </svg>
-                  Sending...
-                </span>
-              ) : (
-                'Send Message'
-              )}
-            </button>
-          </div>
-          
-          <p className="text-gray-500 text-sm text-center pt-4">
-            We respect your privacy. Your information is secure with us.
-          </p>
-        </form>
-      )}
+      <footer className="contact-footer">
+        <button className="contact-button">
+          Contact Us Now
+        </button>
+      </footer>
     </div>
   );
 };
 
-export default ContactForm;
+export default ContactPage;

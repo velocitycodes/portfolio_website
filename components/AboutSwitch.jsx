@@ -198,7 +198,7 @@ export default function AboutSwitch() {
   const whyCircleRef = useRef(null);
   const aboutTitleRef = useRef(null);
   const whyTitleRef = useRef(null);
-  
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -350,22 +350,6 @@ export default function AboutSwitch() {
 
   return (
     <section id="about" ref={containerRef} className="relative h-[300vh] bg-black" style={{ transition: 'none' }}>
-      {/* Add ScrollFloat animation titles at the top */}
-      <div className="absolute top-20 left-0 w-full z-20 px-4 md:px-20">
-        <ScrollFloat
-          scrollContainerRef={containerRef}
-          containerClassName="absolute left-10 md:left-20"
-          textClassName="text-white font-black uppercase tracking-widest text-4xl"
-          animationDuration={1.5}
-          ease="back.inOut(1.5)"
-          scrollStart="top center+=10%"
-          scrollEnd="bottom bottom-=20%"
-          stagger={0.02}
-        >
-          ABOUT US
-        </ScrollFloat>
-      </div>
-
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden" style={{ transition: 'none' }}>
 
         {/* About Us Section */}
@@ -373,16 +357,17 @@ export default function AboutSwitch() {
           style={{ opacity: aboutOpacity, y: aboutY, transition: 'none' }}
           className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-20"
         >
-          {/* Original title hidden but kept for existing animation */}
-          <h2 
-            ref={aboutTitleRef}
-            className="absolute top-20 left-10 md:left-20 text-4xl font-black uppercase tracking-widest text-white opacity-0"
-            style={{ pointerEvents: 'none', transition: 'none' }}
-          >
-            ABOUT US
-          </h2>
+          <div className="absolute top-20 left-10 md:left-20 text-left">
+            <div className="section-header-wrap">
+              <span className="section-tag">The Story</span>
+              <div className="accent-line-heading"></div>
+            </div>
+            <h2 className="text-5xl font-bold uppercase tracking-wide text-white md:text-7xl">
+              ABOUT <span className="text-stroke">US</span>
+            </h2>
+          </div>
 
-          <div 
+          <div
             ref={aboutCircleRef}
             className="relative flex h-[60vh] w-full max-w-5xl items-center justify-center rounded-[50%] border border-white/20 p-10 text-center"
             style={{ transition: 'none' }}
@@ -409,16 +394,17 @@ export default function AboutSwitch() {
           style={{ opacity: whyOpacity, y: whyY, transition: 'none' }}
           className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-20"
         >
-          {/* Original title hidden but kept for existing animation */}
-          <h2 
-            ref={whyTitleRef}
-            className="absolute top-20 left-10 md:left-20 text-4xl font-black uppercase tracking-widest text-white opacity-0"
-            style={{ pointerEvents: 'none', transition: 'none' }}
-          >
-            WHY CHOOSE US
-          </h2>
+          <div className="absolute top-20 left-10 md:left-20 text-left">
+            <div className="section-header-wrap">
+              <span className="section-tag">The Vision</span>
+              <div className="accent-line-heading"></div>
+            </div>
+            <h2 className="text-5xl font-bold uppercase tracking-wide text-white md:text-7xl">
+              WHY <span className="text-stroke">CHOOSE</span>
+            </h2>
+          </div>
 
-          <div 
+          <div
             ref={whyCircleRef}
             className="relative flex h-[60vh] w-full max-w-5xl items-center justify-center rounded-[50%] border border-white/20 p-10 text-center"
             style={{ transition: 'none' }}
@@ -441,6 +427,42 @@ export default function AboutSwitch() {
         </motion.div>
 
       </div>
+      <style>{`
+        .section-header-wrap {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          margin-bottom: 20px;
+        }
+
+        .section-tag {
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+          text-transform: uppercase;
+          letter-spacing: 0.4em;
+          color: #B19EEF;
+          font-size: 14px;
+        }
+
+        .accent-line-heading {
+          height: 1px;
+          width: 50px;
+          background: rgba(177, 158, 239, 0.4);
+        }
+
+        .text-stroke {
+          -webkit-text-stroke: 1px rgba(255,255,255,0.4);
+          color: transparent;
+        }
+
+        @media (max-width: 768px) {
+          .section-header-wrap {
+            justify-content: center;
+          }
+          .text-stroke {
+            -webkit-text-stroke: 0.5px rgba(255,255,255,0.4);
+          }
+        }
+      `}</style>
     </section>
   );
 }
