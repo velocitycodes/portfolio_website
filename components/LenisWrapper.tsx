@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, ReactNode } from "react";
-import Lenis from "@studio-freight/lenis";
 import { usePathname } from "next/navigation";
 
 interface LenisWrapperProps {
@@ -12,40 +11,92 @@ export default function LenisWrapper({ children }: LenisWrapperProps) {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Check if we're on the client side
     if (typeof window === "undefined") return;
 
-    try {
-      // According to Lenis documentation, the most basic initialization
-      // doesn't require any options - it works out of the box
-      const lenis = new Lenis();
-      
-      // Or with minimal options that are known to exist
-      // const lenis = new Lenis({
-      //   lerp: 0.1
-      // });
+    // Simple smooth scroll implementation without external dependencies
+    const initSmoothScroll = () => {
+      let targetScrollY = window.scrollY;
+      let currentScrollY = window.scrollY;
+      let animationFrameId: number;
+      let isScrolling = false;
 
-      // Animation frame loop
-      function raf(time: number) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
+      const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
-      requestAnimationFrame(raf);
+      const smoothScroll = () => {
+        currentScrollY += (targetScrollY - currentScrollY) * 0.1;
+        
+        if (Math.abs(targetScrollY - currentScrollY) < 0.5) {
+          currentScrollY = targetScrollY;
+          window.scrollTo(0, currentScrollY);
+          cancelAnimationFrame(animationFrameId);
+          isScrolling = false;
+          return;
+        }
+        
+        window.scrollTo(0, currentScrollY);
+        animationFrameId = requestAnimationFrame(smoothScroll);
+      };
+
+      const handleWheel = (e: WheelEvent) => {
+        if (e.ctrlKey || e.metaKey) return; // Allow zoom
+        
+        e.preventDefault();
+        targetScrollY += e.deltaY * 0.5;
+        targetScrollY = Math.max(0, Math.min(targetScrollY, document.body.scrollHeight - window.innerHeight));
+        
+        if (!isScrolling) {
+          isScrolling = true;
+          smoothScroll();
+        }
+      };
+
+      const handleTouchStart = (e: TouchEvent) => {
+        const touchY = e.touches[0].clientY;
+        let lastTouchY = touchY;
+
+        const handleTouchMove = (e: TouchEvent) => {
+          const currentTouchY = e.touches[0].clientY;
+          const deltaY = lastTouchY - currentTouchY;
+          lastTouchY = currentTouchY;
+          
+          targetScrollY += deltaY * 1.5;
+          targetScrollY = Math.max(0, Math.min(targetScrollY, document.body.scrollHeight - window.innerHeight));
+          
+          if (!isScrolling) {
+            isScrolling = true;
+            smoothScroll();
+          }
+        };
+
+        const handleTouchEnd = () => {
+          document.removeEventListener("touchmove", handleTouchMove);
+          document.removeEventListener("touchend", handleTouchEnd);
+        };
+
+        document.addEventListener("touchmove", handleTouchMove, { passive: false });
+        document.addEventListener("touchend", handleTouchEnd);
+      };
+
+      // Add event listeners
+      window.addEventListener("wheel", handleWheel, { passive: false });
+      window.addEventListener("touchstart", handleTouchStart, { passive: false });
 
       // Reset scroll on route change
-      lenis.scrollTo(0, { immediate: true });
+      targetScrollY = 0;
+      currentScrollY = 0;
+      window.scrollTo(0, 0);
 
-      // Cleanup function
       return () => {
-        lenis.destroy();
+        cancelAnimationFrame(animationFrameId);
+        window.removeEventListener("wheel", handleWheel);
+        window.removeEventListener("touchstart", handleTouchStart);
       };
-    } catch (error) {
-      console.warn("Lenis initialization failed:", error);
-      // Fallback to normal scrolling
-    }
-  }, [pathname]); // Re-initialize on route change
+    };
 
-  // Return children as-is - Lenis works in the background
+    const cleanup = initSmoothScroll();
+
+    return cleanup;
+  }, [pathname]);
+
   return <>{children}</>;
 }
