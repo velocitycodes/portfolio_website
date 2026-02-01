@@ -173,10 +173,10 @@ export default function Footer() {
                         variants={itemVariants}
                     >
                         <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight uppercase text-center md:text-left">
-                            <span className="text-purple-700 font-serif italic ml-2.5">V</span>
-                            ELOCITY
-                            <span className="text-purple-700 font-serif italic ml-2">C</span>
-                            ODES
+                            <span className="text-purple-700 font-serif italic ml-2.5 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem]">V</span>
+                            <span className="font-sans">ELOCITY</span>
+                            <span className="text-purple-700 font-serif italic ml-2 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem]">C</span>
+                            <span className="font-sans">ODES</span>
                         </h1>
                     </motion.div>
                 </motion.div>

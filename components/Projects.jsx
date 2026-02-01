@@ -10,14 +10,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 }
 
 const PROJECTS = [
-    { 
-        id: "01", 
-        name: "RUAIRE", 
-        desc: "In Progress", 
+    {
+        id: "01",
+        name: "RUAIRE",
+        desc: "In Progress",
         color: "bg-[#1a1a1a]",
         link: "Not-Available",
         images: [
@@ -28,10 +28,10 @@ const PROJECTS = [
         description: "The Project is Currently in Developement Process...",
         tech: [""]
     },
-    { 
-        id: "02", 
-        name: "CHANDRESHWAR PROPERTIES", 
-        desc: "Real-Estate Website", 
+    {
+        id: "02",
+        name: "CHANDRESHWAR PROPERTIES",
+        desc: "Real-Estate Website",
         color: "bg-[#252525]",
         link: "https://chandreshwarproperties.in",
         images: [
@@ -42,10 +42,10 @@ const PROJECTS = [
         description: "Real estate platform with virtual property tours, interactive maps, and CRM integration.",
         tech: ["HTML5", "TAILWIND", "MYSQL", "PHP"]
     },
-    { 
-        id: "03", 
-        name: "MOUNTAIN FLASHES", 
-        desc: "Tours and Adventure Website", 
+    {
+        id: "03",
+        name: "MOUNTAIN FLASHES",
+        desc: "Tours and Adventure Website",
         color: "bg-[#333333]",
         link: "https://mountainflashes.com",
         images: [
@@ -56,7 +56,7 @@ const PROJECTS = [
         description: "A vibrant travel and adventure portal for Mountain Flashes, a premier tour operator specializing in Adventure Sports and Uttarakhand tourism.",
         tech: ["HTML5", "TAILWIND", "MYSQL", "PHP"]
     },
-    
+
 ];
 
 export default function Projects() {
@@ -66,7 +66,7 @@ export default function Projects() {
     const subtitleRef = useRef(null);
     const projectRefs = useRef([]);
     const buttonRef = useRef(null);
-    
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"],
@@ -129,7 +129,7 @@ export default function Projects() {
         // Projects animation (staggered with different effects)
         projectRefs.current.forEach((project, index) => {
             if (!project) return;
-            
+
             tl.fromTo(project,
                 {
                     y: 150,
@@ -191,12 +191,15 @@ export default function Projects() {
     return (
         <section id="portfolio" ref={sectionRef} className="relative bg-black px-4 md:px-20 py-20">
             <div className="mb-20">
-                <h2 ref={titleRef} className="text-center text-4xl md:text-5xl font-black uppercase tracking-widest text-white">
-                    OUR PROJECTS
+                <h2 ref={titleRef} className="text-center text-5xl md:text-8xl font-bold tracking-[-0.04em] text-white" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>
+                    OUR <span className="opacity-40">PROJECTS</span>
                 </h2>
-                <p ref={subtitleRef} className="mt-4 text-center text-white/60 text-lg">
-                    Showcasing our innovative digital solutions
-                </p>
+                <div ref={subtitleRef} className="mt-8 flex flex-col items-center gap-6">
+                    <p className="text-center text-white/30 text-sm md:text-base tracking-[0.2em] uppercase font-semibold" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
+                        Digital Excellence
+                    </p>
+                    <div className="w-10 h-[1px] bg-white/20" />
+                </div>
             </div>
 
             <div ref={containerRef} className="flex flex-col items-center gap-10 pb-40">
@@ -218,28 +221,29 @@ export default function Projects() {
                             <div className="flex h-full w-full flex-col justify-between">
                                 {/* Header with ID, Name, and Live Tag */}
                                 <div className="flex items-center justify-between border-b border-white/10 pb-6">
-                                    <div className="flex items-center gap-4">
-                                        <span className="text-4xl font-black text-white">{project.id}</span>
+                                    <div className="flex items-center gap-6">
+                                        <span className="text-6xl font-bold text-white/5 tracking-tighter" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>{project.id}</span>
                                         <div className="flex flex-col">
-                                            <span className="text-2xl font-black uppercase tracking-wide text-white/90">
+                                            <span className="text-2xl md:text-4xl font-bold tracking-tight text-white" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>
                                                 {project.name}
                                             </span>
-                                            <p className="mt-2 text-sm text-white/60 max-w-lg">
+                                            <p className="mt-3 text-[15px] md:text-base text-white/40 max-w-lg leading-relaxed font-medium" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                                                 {project.description}
                                             </p>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col items-end gap-2">
-                                        <span className="rounded-full border border-white/30 px-4 py-1 text-xs font-bold uppercase tracking-widest text-white">
+                                    <div className="flex flex-col items-end gap-4">
+                                        <span className="rounded-full border border-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white/40" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                                             {project.desc}
                                         </span>
-                                        <Link 
+                                        <Link
                                             href={project.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-white/80 hover:text-white text-sm font-medium transition-colors flex items-center gap-1"
+                                            className="text-white/30 hover:text-white text-[11px] uppercase font-bold tracking-[0.2em] transition-all duration-300 flex items-center gap-2 group/link border-b border-transparent hover:border-white/20 pb-1"
+                                            style={{ fontFamily: 'var(--font-inter), sans-serif' }}
                                         >
-                                            View Live Project →
+                                            View Project <span className="group-hover/link:translate-x-1 transition-transform">→</span>
                                         </Link>
                                     </div>
                                 </div>
@@ -261,7 +265,7 @@ export default function Projects() {
                                             className="object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
                                     </div>
-                                    
+
                                     {/* Side Images */}
                                     <div className="flex h-full w-2/5 flex-col gap-6">
                                         <div className="h-1/2 rounded-2xl overflow-hidden relative group">
@@ -289,15 +293,16 @@ export default function Projects() {
                                 <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-6">
                                     <div className="flex flex-wrap gap-2">
                                         {project.tech.map((tech, i) => (
-                                            <span 
+                                            <span
                                                 key={i}
-                                                className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/80 border border-white/20"
+                                                className="px-3 py-1 bg-white/5 rounded-full text-[9px] font-bold uppercase tracking-widest text-white/40 border border-white/10"
+                                                style={{ fontFamily: 'var(--font-space-grotesk), sans-serif' }}
                                             >
                                                 {tech}
                                             </span>
                                         ))}
                                     </div>
-                                    <Link 
+                                    <Link
                                         href={project.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
@@ -324,14 +329,13 @@ export default function Projects() {
                 viewport={{ once: true }}
                 className="text-center mt-10"
             >
-                <Link 
+                <Link
                     href="/projects"
-                    className="inline-flex items-center gap-2 px-8 py-3 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 transition-colors"
+                    className="inline-flex items-center gap-6 px-12 py-5 border border-white/5 text-[11px] uppercase tracking-[0.3em] text-white/30 font-bold rounded-full hover:bg-white/5 hover:text-white transition-all duration-500 hover:scale-[1.02]"
+                    style={{ fontFamily: 'var(--font-inter), sans-serif' }}
                 >
-                    <span>View All Projects</span>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    <span>View All Work</span>
+                    <div className="w-8 h-[1px] bg-white/20 group-hover:bg-white transition-colors" />
                 </Link>
             </motion.div>
         </section>

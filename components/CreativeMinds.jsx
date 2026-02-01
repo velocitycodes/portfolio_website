@@ -138,203 +138,196 @@ const PixelTransition = ({
 
 // TEAM_MEMBERS data
 const TEAM_MEMBERS = [
-    { 
-        id: 1, 
-        name: "Saral Jain", 
-        role: "Director/Developer",
-        image: "/images/saral-jain-img.jpeg",
-        hoverBg: "from-blue-500 to-purple-600"
-    },
-    { 
-        id: 2, 
-        name: "Aditya Kumar", 
-        role: "Chief Developer",
-        image: "/images/Aditya_img.jpg",
-        hoverBg: "from-green-500 to-teal-600"
-    },
-    { 
-        id: 3, 
-        name: "Vicky Ranjan", 
-        role: "Manager",
-        image: "/images/vickyranjan-img.png",
-        hoverBg: "from-orange-500 to-red-600"
-    },
-    { 
-        id: 4, 
-        name: "Chirag Jain", 
-        role: "Designing Engineer",
-        image: "/images/chirag-jain-img.png",
-        hoverBg: "from-pink-500 to-rose-600"
-    }
+  {
+    id: 1,
+    name: "Saral Jain",
+    role: "Director/Developer",
+    image: "/images/saral-jain-img.jpeg",
+    hoverBg: "from-blue-500 to-purple-600"
+  },
+  {
+    id: 2,
+    name: "Aditya Kumar",
+    role: "Chief Developer",
+    image: "/images/Aditya_img.jpg",
+    hoverBg: "from-green-500 to-teal-600"
+  },
+  {
+    id: 3,
+    name: "Vicky Ranjan",
+    role: "Manager",
+    image: "/images/vickyranjan-img.png",
+    hoverBg: "from-orange-500 to-red-600"
+  },
+  {
+    id: 4,
+    name: "Chirag Jain",
+    role: "Design Engineer",
+    image: "/images/chirag-jain.jpeg",
+    hoverBg: "from-pink-500 to-rose-600"
+  }
 ];
 
 // Main CreativeMinds component
 export default function CreativeMinds() {
-    const sectionRef = useRef(null);
-    const titleRef = useRef(null);
-    const subtitleRef = useRef(null);
-    const teamRefs = useRef([]);
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+  const teamRefs = useRef([]);
 
-    useEffect(() => {
-        if (!sectionRef.current) return;
+  useEffect(() => {
+    if (!sectionRef.current) return;
 
-        // Create GSAP timeline
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top 70%",
-                end: "top 20%",
-                scrub: 1,
-                markers: false,
-            }
-        });
+    // Create GSAP timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 70%",
+        end: "top 20%",
+        scrub: 1,
+        markers: false,
+      }
+    });
 
-        // Subtitle animation
-        tl.fromTo(subtitleRef.current,
-            {
-                y: 50,
-                opacity: 0,
-                scale: 0.9
-            },
-            {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                duration: 0.8,
-                ease: "power2.out"
-            },
-            0
-        );
-
-        // Title animation
-        tl.fromTo(titleRef.current,
-            {
-                y: 80,
-                opacity: 0,
-                scale: 0.8,
-                filter: "blur(10px)"
-            },
-            {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                filter: "blur(0px)",
-                duration: 1,
-                ease: "power3.out"
-            },
-            0.2
-        );
-
-        // Team member cards animation (staggered)
-        tl.fromTo(teamRefs.current,
-            {
-                y: 100,
-                opacity: 0,
-                scale: 0.8,
-                rotation: 5
-            },
-            {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                rotation: 0,
-                duration: 0.8,
-                ease: "back.out(1.2)",
-                stagger: 0.1
-            },
-            0.4
-        );
-
-        // Cleanup
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-            tl.kill();
-        };
-    }, []);
-
-    return (
-        <>
-            {/* Add Google Font in the head section for Next.js */}
-            <link
-                href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
-                rel="stylesheet"
-            />
-            
-            <section ref={sectionRef} className="bg-black py-24 px-4 md:px-20">
-                <div className="mb-16 text-center">
-                    <span 
-                        ref={subtitleRef}
-                        className="text-xs font-semibold uppercase tracking-widest text-gray-500"
-                        style={{ fontFamily: "'Josefin Sans', sans-serif" }}
-                    >
-                        OUR TEAM
-                    </span>
-                    <h2 
-                        ref={titleRef}
-                        className="mt-2 text-4xl font-bold uppercase tracking-wide text-white md:text-5xl"
-                        style={{ fontFamily: "'Josefin Sans', sans-serif" }}
-                    >
-                        Creative 
-                        
-                        Minds
-                    </h2>
-                </div>
-
-                <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
-                    {TEAM_MEMBERS.map((member, index) => (
-                        <motion.div
-                            key={member.id}
-                            ref={el => teamRefs.current[index] = el}
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            className="flex flex-col items-center"
-                        >
-                            <PixelTransition
-                                style={{
-                                    width: '100%',
-                                    maxWidth: '280px',
-                                    height: '400px',
-                                    backgroundColor: '#333',
-                                    border: '1px solid #555',
-                                    borderRadius: '24px',
-                                    overflow: 'hidden'
-                                }}
-                                firstContent={
-                                    <div className="w-full h-full">
-                                        {/* Image appears here before hover animation */}
-                                        <img 
-                                            src={member.image}
-                                            alt={member.name}
-                                            className="h-full w-full object-cover rounded-3xl"
-                                        />
-                                    </div>
-                                }
-                                secondContent={
-                                    <div className={`w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr ${member.hoverBg} p-6 rounded-3xl`}>
-                                        <div className="text-white text-center">
-                                            <h1 
-                                                className="text-3xl mb-2 font-bold"
-                                                style={{ fontFamily: "'Josefin Sans', sans-serif" }}
-                                            >
-                                                {member.name}
-                                            </h1>
-                                            <p 
-                                                className="text-sm font-semibold opacity-90"
-                                                style={{ fontFamily: "'Josefin Sans', sans-serif" }}
-                                            >
-                                                {member.role}
-                                            </p>
-                                        </div>
-                                    </div>
-                                }
-                                gridSize={10}
-                                pixelColor="#ffffff"
-                                animationStepDuration={0.5}
-                            />
-                        </motion.div>
-                    ))}
-                </div>
-            </section>
-        </>
+    // Subtitle animation
+    tl.fromTo(subtitleRef.current,
+      {
+        y: 50,
+        opacity: 0,
+        scale: 0.9
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        ease: "power2.out"
+      },
+      0
     );
+
+    // Title animation
+    tl.fromTo(titleRef.current,
+      {
+        y: 80,
+        opacity: 0,
+        scale: 0.8,
+        filter: "blur(10px)"
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 1,
+        ease: "power3.out"
+      },
+      0.2
+    );
+
+    // Team member cards animation (staggered)
+    tl.fromTo(teamRefs.current,
+      {
+        y: 100,
+        opacity: 0,
+        scale: 0.8,
+        rotation: 5
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 0.8,
+        ease: "back.out(1.2)",
+        stagger: 0.1
+      },
+      0.4
+    );
+
+    // Cleanup
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      tl.kill();
+    };
+  }, []);
+
+  return (
+    <>
+
+      <section ref={sectionRef} className="bg-black py-24 px-4 md:px-20">
+        <div className="mb-24 text-center">
+          <span
+            ref={subtitleRef}
+            className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/30"
+            style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+          >
+            TECH-LEADS
+          </span>
+          <h2
+            ref={titleRef}
+            className="mt-6 text-5xl font-bold uppercase tracking-tight text-white md:text-8xl"
+            style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
+          >
+            CREATIVE <span className="opacity-40">MINDS</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+          {TEAM_MEMBERS.map((member, index) => (
+            <motion.div
+              key={member.id}
+              ref={el => teamRefs.current[index] = el}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="flex flex-col items-center"
+            >
+              <PixelTransition
+                style={{
+                  width: '100%',
+                  maxWidth: '280px',
+                  height: '400px',
+                  backgroundColor: '#333',
+                  border: '1px solid #555',
+                  borderRadius: '24px',
+                  overflow: 'hidden'
+                }}
+                firstContent={
+                  <div className="w-full h-full">
+                    {/* Image appears here before hover animation */}
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="h-full w-full object-cover rounded-3xl"
+                    />
+                  </div>
+                }
+                secondContent={
+                  <div className={`w-full h-full flex flex-col items-center justify-center bg-gradient-to-tr ${member.hoverBg} p-6 rounded-3xl`}>
+                    <div className="text-white text-center">
+                      <h1
+                        className="text-2xl mb-1 font-bold tracking-tight"
+                        style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
+                      >
+                        {member.name}
+                      </h1>
+                      <p
+                        className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-50"
+                        style={{ fontFamily: 'var(--font-inter), sans-serif' }}
+                      >
+                        {member.role}
+                      </p>
+                    </div>
+                  </div>
+                }
+                gridSize={10}
+                pixelColor="#ffffff"
+                animationStepDuration={0.5}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </section>
+    </>
+  );
 }

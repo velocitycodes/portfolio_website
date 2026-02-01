@@ -1,8 +1,14 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+}
 
 // Using simpleicons.org for consistent tech logos
 const SKILLS = [
@@ -21,28 +27,60 @@ const SKILLS = [
 
 export default function Skills() {
     const [selectedId, setSelectedId] = useState(null);
+    const sectionRef = useRef(null);
+    const titleRef = useRef(null);
+    const containerRef = useRef(null);
 
-    const radius = 250; // Radius of the circle
+    useEffect(() => {
+        if (!sectionRef.current) return;
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top 80%",
+                end: "top 20%",
+                scrub: 1,
+            }
+        });
+
+        tl.fromTo(titleRef.current,
+            { y: 100, opacity: 0, filter: "blur(10px)" },
+            { y: 0, opacity: 1, filter: "blur(0px)", duration: 1 }
+        );
+
+        tl.fromTo(containerRef.current,
+            { scale: 0.8, opacity: 0, rotation: -10 },
+            { scale: 1, opacity: 1, rotation: 0, duration: 1.5, ease: "back.out(1.2)" },
+            0.2
+        );
+
+        return () => {
+            tl.kill();
+        };
+    }, []);
 
     return (
-        <section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black text-white">
-            <div className="absolute top-20 text-center z-10">
+        <section ref={sectionRef} className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black text-white">
+            <div ref={titleRef} className="absolute top-20 text-center z-10">
                 <div className="section-header-wrap">
                     <span className="section-tag">Technical Stack</span>
                     <div className="accent-line-heading"></div>
                 </div>
-                <h2 className="text-5xl font-bold uppercase tracking-wide text-white md:text-7xl">
-                    OUR <span className="text-stroke">SKILLS</span>
+                <h2 className="text-5xl font-bold uppercase tracking-tight text-white md:text-8xl" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>
+                    OUR <span className="opacity-40">SKILLS</span>
                 </h2>
+
             </div>
 
             {/* Rotating Container */}
             <motion.div
-                className="relative flex items-center justify-center size-[600px]"
+                ref={containerRef}
+                className="relative flex items-center justify-center size-[300px] md:size-[600px]"
                 animate={{ rotate: selectedId ? 0 : 360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             >
                 {SKILLS.map((skill, index) => {
+                    const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 120 : 250;
                     const angle = (index / SKILLS.length) * 2 * Math.PI;
                     const x = Math.cos(angle) * radius;
                     const y = Math.sin(angle) * radius;
@@ -87,10 +125,10 @@ export default function Skills() {
                                 unoptimized
                             />
                         </div>
-                        <motion.h3 className="mb-2 text-2xl font-black uppercase tracking-wide text-purple-400">
+                        <motion.h3 className="mb-2 text-2xl font-bold tracking-tight text-white" style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}>
                             {SKILLS.find((s) => s.id === selectedId)?.name}
                         </motion.h3>
-                        <motion.p className="text-gray-400 text-sm">
+                        <motion.p className="text-white/50 text-sm font-medium" style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
                             {SKILLS.find((s) => s.id === selectedId)?.desc}
                         </motion.p>
                         <motion.button className="mt-4 text-xs font-bold uppercase tracking-widest text-white/50 hover:text-white">

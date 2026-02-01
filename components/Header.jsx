@@ -199,24 +199,38 @@ const StaggeredMenu = ({
         .sm-line.open:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         
         .staggered-menu-panel {
-          position: fixed; top: 0; left: 0; width: clamp(300px, 40vw, 500px); height: 100vh;
-          background: #111; padding: 100px 50px; z-index: 90; pointer-events: auto;
+          position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+          background: #111; padding: 100px 30px; z-index: 90; pointer-events: auto;
           display: flex; flex-direction: column; gap: 40px;
         }
-        .sm-prelayers { position: fixed; top: 0; left: 0; width: clamp(300px, 40vw, 500px); height: 100vh; z-index: 80; pointer-events: none; }
+        @media (min-width: 768px) {
+          .staggered-menu-panel { width: clamp(300px, 40vw, 500px); padding: 100px 50px; }
+        }
+        .sm-prelayers { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 80; pointer-events: none; }
+        @media (min-width: 768px) {
+          .sm-prelayers { width: clamp(300px, 40vw, 500px); }
+        }
         .sm-prelayer { position: absolute; inset: 0; }
         
         .sm-panel-list { list-style: none; padding: 0; margin: 0; }
         .sm-panel-item { 
-          background: none; border: none; color: white; font-size: 3rem; font-weight: 800; 
+          background: none; border: none; color: white; font-size: 2rem; font-weight: 800; 
           text-transform: uppercase; cursor: pointer; text-align: left; padding: 10px 0;
           overflow: hidden; display: block; width: 100%;
+          font-family: var(--font-jakarta), sans-serif;
+          letter-spacing: -0.02em;
+        }
+        @media (min-width: 768px) {
+          .sm-panel-item { font-size: 3.5rem; }
         }
         .sm-panel-itemLabel { display: block; transition: color 0.3s; }
-        .sm-panel-item:hover .sm-panel-itemLabel { color: #B19EEF; }
+        .sm-panel-item:hover .sm-panel-itemLabel { color: #a22ce6ff; }
         
         .sm-socials { margin-top: auto; }
-        .sm-socials-title { color: #555; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px; }
+        .sm-socials-title { 
+            color: #555; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 20px; 
+            font-family: var(--font-inter), sans-serif; font-weight: 600;
+        }
         .sm-socials-list { display: flex; gap: 20px; list-style: none; padding: 0; }
         .sm-socials-link { color: white; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .sm-socials-link:hover { color: #B19EEF; }
@@ -276,6 +290,10 @@ export default function Header() {
       router.push('/contact');
       return;
     }
+    if (id === 'templates') {
+      router.push('/templates');
+      return;
+    }
 
     // If we're not on the home page, go to home first then scroll? 
     // For now, assume home page or simple redirect
@@ -296,13 +314,15 @@ export default function Header() {
     { name: "Portfolio", sectionId: "portfolio" },
     { name: "About", sectionId: "about" },
     { name: "Contact", sectionId: "contact" },
+    { name: "Templates", sectionId: "templates" },
+
   ];
 
   const socialItems = [
-    { label: "Twitter", link: "https://twitter.com" },
-    { label: "GitHub", link: "https://github.com" },
+    { label: "Twitter", link: "https://twitter.com/VelocityCodes" },
+    { label: "GitHub", link: "https://github.com/velocitycodes" },
     { label: "LinkedIn", link: "https://linkedin.com" },
-    { label: "Instagram", link: "https://instagram.com" },
+    { label: "Instagram", link: "https://instagram.com/velocity.codes" },
   ];
 
   return (
@@ -326,18 +346,19 @@ export default function Header() {
           onClick={() => scrollToSection('hero')}
           className="text-2xl font-bold tracking-widest text-white uppercase flex items-center gap-1 hover:opacity-80 transition-opacity"
         >
-          <span className="text-purple-700 font-serif italic text-4xl mr-1">V</span>
-          ELOCITY
-          <span className="text-purple-700 font-serif italic text-4xl ml-2 mr-1">C</span>
-          ODES
+          <span className="text-purple-700 font-serif italic text-3xl md:text-4xl mr-1.5">V</span>
+          <span className="font-sans">ELOCITY</span>
+          <span className="text-purple-700 font-serif italic text-3xl md:text-4xl ml-1.5 mr-1.5">C</span>
+          <span className="font-sans">ODES</span>
         </button>
       </div>
 
       {/* Right: Hire Us */}
-      <div className="flex justify-end w-1/3">
+      <div className="flex justify-end lg:w-1/3">
         <button
           onClick={() => scrollToSection('contact')}
-          className="rounded-full border border-white px-8 py-2 text-sm font-medium text-white transition-all hover:bg-white hover:text-black uppercase tracking-widest"
+          className="hidden md:block rounded-full border border-white/20 px-8 py-2 text-[10px] font-bold text-white transition-all hover:bg-white hover:text-black uppercase tracking-[0.2em]"
+          style={{ fontFamily: 'var(--font-inter), sans-serif', cursor: 'pointer' }}
         >
           Hire Us
         </button>
