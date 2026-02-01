@@ -12,32 +12,20 @@
 }
 
 .contact-header h1 {
-<<<<<<< HEAD
     font-size: clamp(3rem, 8vw, 5rem);
     font-weight: 800;
     margin-bottom: 16px;
     color: #fff;
     letter-spacing: -0.04em;
     font-family: var(--font-jakarta), sans-serif;
-=======
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: #9f47ec;
->>>>>>> 20350c8cba2c95a6f78715eb72437b10c484ad2b
 }
 
 .subtitle {
     font-size: 1.1rem;
-<<<<<<< HEAD
     color: rgba(255, 255, 255, 0.4);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-=======
-    color: #9f47ec;
-    font-weight: 400;
->>>>>>> 20350c8cba2c95a6f78715eb72437b10c484ad2b
 }
 
 .contact-content {
@@ -97,16 +85,10 @@
 }
 
 .contact-text {
-<<<<<<< HEAD
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 600;
     transition: color 0.3s ease;
-=======
-    font-size: 1.1rem;
-    color: #9f47ec;
-    font-weight: 500;
->>>>>>> 20350c8cba2c95a6f78715eb72437b10c484ad2b
 }
 
 .contact-item:hover .contact-text {
@@ -130,14 +112,8 @@
 
 .contact-message p {
     font-size: 1.1rem;
-<<<<<<< HEAD
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.8;
-=======
-    color: #9f47ec;
-    line-height: 1.6;
-    margin-bottom: 8px;
->>>>>>> 20350c8cba2c95a6f78715eb72437b10c484ad2b
 }
 
 .contact-footer {
