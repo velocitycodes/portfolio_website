@@ -327,11 +327,11 @@ export default function Header() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 transition-all duration-300 ${isScrolled ? "bg-black/90 backdrop-blur-md py-4" : "bg-transparent"
+      className={`sticky top-0 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-8 py-6 transition-all duration-300 ${isScrolled ? "bg-black/90 backdrop-blur-md py-4" : "bg-transparent"
         }`}
     >
       {/* Left: Hamburger Menu */}
-      <div className="flex items-center w-1/3">
+      <div className="flex items-center w-auto md:w-1/3">
         <StaggeredMenu
           items={menuItems}
           socialItems={socialItems}
@@ -341,20 +341,20 @@ export default function Header() {
       </div>
 
       {/* Center: Logo */}
-      <div className="flex justify-center w-1/3">
+      <div className="flex justify-center flex-1 md:w-1/3 md:flex-none">
         <button
           onClick={() => scrollToSection('hero')}
-          className="text-2xl font-bold tracking-widest text-white uppercase flex items-center gap-1 hover:opacity-80 transition-opacity"
+          className="text-lg sm:text-2xl font-bold tracking-widest text-white uppercase flex items-center gap-1 hover:opacity-80 transition-opacity"
         >
-          <span className="text-purple-700 font-serif italic text-3xl md:text-4xl mr-1.5">V</span>
+          <span className="text-purple-700 font-serif italic text-xl sm:text-3xl md:text-4xl mr-1">V</span>
           <span className="font-sans">ELOCITY</span>
-          <span className="text-purple-700 font-serif italic text-3xl md:text-4xl ml-1.5 mr-1.5">C</span>
+          <span className="text-purple-700 font-serif italic text-xl sm:text-3xl md:text-4xl ml-1 mr-1">C</span>
           <span className="font-sans">ODES</span>
         </button>
       </div>
 
       {/* Right: Hire Us */}
-      <div className="flex justify-end lg:w-1/3">
+      <div className="flex justify-end w-auto md:w-1/3">
         <button
           onClick={() => scrollToSection('contact')}
           className="hidden md:block rounded-full border border-white/20 px-8 py-2 text-[10px] font-bold text-white transition-all hover:bg-white hover:text-black uppercase tracking-[0.2em]"

@@ -70,7 +70,7 @@ export default function TemplatesPage() {
                         Premium Digital Assets
                     </span>
                     <h1
-                        className="text-6xl md:text-8xl font-bold tracking-[-0.04em] leading-[0.9] text-white mb-8"
+                        className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-[-0.04em] leading-[0.9] text-white mb-8"
                         style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
                     >
                         DESIGNED FOR <br />

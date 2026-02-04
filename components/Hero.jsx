@@ -122,12 +122,12 @@ export default function Hero() {
                             {/* Fallback text if video doesn't load */}
                             Your browser does not support the video tag.
                         </video>
-                        
+
                         {/* Gradient overlays for better text readability */}
                         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70" />
                         <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
                         <div className="absolute inset-0 bg-gradient-to-t from-purple-900/10 via-transparent to-blue-900/10 mix-blend-overlay" />
-                        
+
                         {/* Animated noise texture for cyberpunk effect */}
                         <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay">
                             <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 512 512%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url%28%23noiseFilter%29%22/%3E%3C/svg%3E')]"></div>
@@ -148,7 +148,7 @@ export default function Hero() {
 
                     <h1
                         ref={titleRef}
-                        className="text-6xl md:text-8xl lg:text-[120px] tracking-[-0.04em] text-white font-bold leading-[0.9]"
+                        className="text-4xl sm:text-5xl md:text-8xl lg:text-[120px] tracking-[-0.04em] text-white font-bold leading-[0.9]"
                         style={{ fontFamily: 'var(--font-jakarta), sans-serif' }}
                     >
                         Designing <span className="opacity-40">Platforms</span>
@@ -191,7 +191,7 @@ export default function Hero() {
                         </span>
                     </div>
                 </div>
-            </section>
+            </section >
         </>
     );
 }

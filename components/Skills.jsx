@@ -31,6 +31,18 @@ export default function Skills() {
     const titleRef = useRef(null);
     const containerRef = useRef(null);
 
+    const [radius, setRadius] = useState(250);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setRadius(window.innerWidth < 768 ? 120 : 250);
+        };
+
+        handleResize(); // Initial check
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     useEffect(() => {
         if (!sectionRef.current) return;
 
@@ -80,7 +92,6 @@ export default function Skills() {
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             >
                 {SKILLS.map((skill, index) => {
-                    const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 120 : 250;
                     const angle = (index / SKILLS.length) * 2 * Math.PI;
                     const x = Math.cos(angle) * radius;
                     const y = Math.sin(angle) * radius;

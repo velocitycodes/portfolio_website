@@ -28,7 +28,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Velocity Codes",
   description: "Designing Platforms That Define You",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
 };
 
 export default function RootLayout({

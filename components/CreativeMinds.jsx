@@ -273,7 +273,7 @@ export default function CreativeMinds() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {TEAM_MEMBERS.map((member, index) => (
             <motion.div
               key={member.id}
@@ -283,15 +283,8 @@ export default function CreativeMinds() {
               className="flex flex-col items-center"
             >
               <PixelTransition
-                style={{
-                  width: '100%',
-                  maxWidth: '280px',
-                  height: '400px',
-                  backgroundColor: '#333',
-                  border: '1px solid #555',
-                  borderRadius: '24px',
-                  overflow: 'hidden'
-                }}
+                className="w-full max-w-[280px] h-[350px] md:h-[400px] bg-[#333] border border-[#555] rounded-3xl overflow-hidden"
+                style={{}}
                 firstContent={
                   <div className="w-full h-full">
                     {/* Image appears here before hover animation */}

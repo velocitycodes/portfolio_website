@@ -172,10 +172,10 @@ export default function Footer() {
                         className="md:col-span-12 mt-12 md:mt-20"
                         variants={itemVariants}
                     >
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight uppercase text-center md:text-left">
-                            <span className="text-purple-700 font-serif italic ml-2.5 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem]">V</span>
+                        <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tight uppercase text-center md:text-left">
+                            <span className="text-purple-700 font-serif italic ml-2.5 text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem]">V</span>
                             <span className="font-sans">ELOCITY</span>
-                            <span className="text-purple-700 font-serif italic ml-2 text-6xl md:text-8xl lg:text-9xl xl:text-[10rem]">C</span>
+                            <span className="text-purple-700 font-serif italic ml-2 text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-[10rem]">C</span>
                             <span className="font-sans">ODES</span>
                         </h1>
                     </motion.div>

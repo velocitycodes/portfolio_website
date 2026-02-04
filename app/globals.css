@@ -155,10 +155,11 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
-  overflow-x: hidden;
   position: relative;
   min-height: 100vh;
 }
@@ -262,11 +263,9 @@ body.initial-load {
 }
 
 .glass-gradient {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.1) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -282,14 +281,12 @@ body.initial-load {
   position: absolute;
   inset: -2px;
   border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    #5227FF 0%,
-    #FF9FFC 25%,
-    #7C3AED 50%,
-    #4F46E5 75%,
-    #5227FF 100%
-  );
+  background: linear-gradient(135deg,
+      #5227FF 0%,
+      #FF9FFC 25%,
+      #7C3AED 50%,
+      #4F46E5 75%,
+      #5227FF 100%);
   z-index: -1;
   opacity: 0.5;
   filter: blur(4px);
@@ -301,14 +298,12 @@ body.initial-load {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(
-    135deg,
-    #5227FF 0%,
-    #FF9FFC 25%,
-    #7C3AED 50%,
-    #4F46E5 75%,
-    #5227FF 100%
-  );
+  background: linear-gradient(135deg,
+      #5227FF 0%,
+      #FF9FFC 25%,
+      #7C3AED 50%,
+      #4F46E5 75%,
+      #5227FF 100%);
   z-index: -1;
 }
 
@@ -320,24 +315,31 @@ body.initial-load {
   0% {
     filter: hue-rotate(0deg);
   }
+
   100% {
     filter: hue-rotate(360deg);
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-20px);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(82, 39, 255, 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(82, 39, 255, 0.6);
   }
@@ -347,6 +349,7 @@ body.initial-load {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -357,6 +360,7 @@ body.initial-load {
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -368,6 +372,7 @@ body.initial-load {
     opacity: 0;
     transform: translateY(50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -379,6 +384,7 @@ body.initial-load {
     opacity: 0;
     transform: translateY(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -390,6 +396,7 @@ body.initial-load {
     filter: blur(20px);
     opacity: 0;
   }
+
   to {
     filter: blur(0px);
     opacity: 1;
@@ -406,12 +413,10 @@ body.initial-load {
 }
 
 .animate-shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 100%);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -433,12 +438,29 @@ body.initial-load {
 }
 
 /* Stagger animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+.stagger-6 {
+  animation-delay: 0.6s;
+}
 
 /* ============================================
    SMOOTH TRANSITIONS
@@ -459,7 +481,7 @@ body.initial-load {
 /* Hover lift effect */
 .hover-lift {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hover-lift:hover {
@@ -481,24 +503,20 @@ body.initial-load {
    ============================================ */
 
 .text-gradient {
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #a5b4fc 50%,
-    #ffffff 100%
-  );
+  background: linear-gradient(135deg,
+      #ffffff 0%,
+      #a5b4fc 50%,
+      #ffffff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-purple {
-  background: linear-gradient(
-    135deg,
-    #c4b5fd 0%,
-    #7c3aed 50%,
-    #5b21b6 100%
-  );
+  background: linear-gradient(135deg,
+      #c4b5fd 0%,
+      #7c3aed 50%,
+      #5b21b6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
